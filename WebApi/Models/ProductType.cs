@@ -7,10 +7,6 @@ namespace WebApi.Models
     public class ProductType
     {
         [Key]
-        [StringLength(8)]
-        [Column("FCSKID")]
-        public string? fcskid { get; set; }
-
         [Column("FCCODE")]
         public string? fccode { get; set; }
 

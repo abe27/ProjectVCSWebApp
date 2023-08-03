@@ -23,23 +23,35 @@ namespace WebApi.Controllers
 
         // GET: api/Product
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProduct()
+        public async Task<ActionResult<IEnumerable<Product>>> GetProduct(int? limit)
         {
-          if (_context.Product == null)
-          {
-              return NotFound();
-          }
-            return await _context.Product.Include(s => s.unit).Take(10).ToListAsync();
+            int limitPerPage = 10;
+            if (limit != null)
+            {
+                limitPerPage = (int)limit;
+            }
+
+            if (_context.Product == null)
+            {
+                return NotFound();
+            }
+            return await _context.Product.
+                Include(t => t.unit).
+                Include(t => t.product_type).
+                Include(t => t.pdgroup.corp).
+                Include(t => t.corp).
+                Take(limitPerPage).
+                ToListAsync();
         }
 
         // GET: api/Product/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(string id)
         {
-          if (_context.Product == null)
-          {
-              return NotFound();
-          }
+            if (_context.Product == null)
+            {
+                return NotFound();
+            }
             var product = await _context.Product.FindAsync(id);
 
             if (product == null)
@@ -86,10 +98,10 @@ namespace WebApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Product>> PostProduct(Product product)
         {
-          if (_context.Product == null)
-          {
-              return Problem("Entity set 'WebApiContext.Product'  is null.");
-          }
+            if (_context.Product == null)
+            {
+                return Problem("Entity set 'WebApiContext.Product'  is null.");
+            }
             _context.Product.Add(product);
             try
             {

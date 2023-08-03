@@ -602,5 +602,14 @@ namespace WebApi.Models
         //UM         *Unit     `gorm:"foreignKey:FCUM;references:FCSKID;" json:"unit"`
         [ForeignKey(nameof(fcum))]
         public Unit? unit { get; set; }
+
+        [ForeignKey(nameof(fctype))]
+        public ProductType? product_type { get; set; }
+
+        [ForeignKey(nameof(fcpdgrp))]
+        public required PdGroup pdgroup { get; set; }
+
+        [ForeignKey(nameof(fccorp))]
+        public required Corp corp { get; set; }
     }
 }
