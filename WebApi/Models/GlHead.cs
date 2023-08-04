@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebApi.Models
 {
+    [Table("GLHEAD")]
     public class GlHead
     {
         [Key]

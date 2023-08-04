@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApi.Models
 {
+    [Table("GL")]
     public class Gl
     {
         [Column("FCACCHART")]// string `gorm:"column:FCACCHART;" json:"fcacchart"  form:"fcacchart" `

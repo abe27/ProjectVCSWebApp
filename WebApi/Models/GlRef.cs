@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebApi.Models
 {
+    [Table("GLREF")]
     public class GlRef
     {
         [Column("FCATSTEP")]
