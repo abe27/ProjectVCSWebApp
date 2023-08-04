@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.VisualBasic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection.Emit;
 
 namespace WebApi.Models
 {
+    [Table("ORDERH")]
     public class OrderHead
     {
         [Column("FCBOOK")]
@@ -67,6 +69,8 @@ namespace WebApi.Models
         [Column("FCSECT")]
         public string? fcsect { get; set; }//str
 
+        [Key]
+        [StringLength(8)]
         [Column("FCSKID")]
         public string? fcskid { get; set; }//str
 

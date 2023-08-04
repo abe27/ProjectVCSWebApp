@@ -1,12 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApi.Models
 {
+    [Table("PAYTERM")]
     public class PaymentTerm
     {
         [Column("FCDATASER ")]
         public string? fcdataser { get; set; }//str
 
+        [Key]
+        [StringLength(8)]
         [Column("FCSKID ")]
         public string? fcskid { get; set; }//str
 

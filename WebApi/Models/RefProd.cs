@@ -6,6 +6,7 @@ using System.Diagnostics.Metrics;
 
 namespace WebApi.Models
 {
+    [Table("REFPROD")]
     public class RefProd
     {
         [Column("FCACCHART")]

@@ -1,8 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.Metrics;
 
 namespace WebApi.Models
 {
+    [Table("ORDERI")]
     public class OrderDetail
     {
         [Column("FCACCHART")]
@@ -173,6 +175,8 @@ namespace WebApi.Models
         [Column("FCSHOWCOMP")]
         public string? fcshowcomp { get; set; }//str
 
+        [Key]
+        [StringLength(8)]
         [Column("FCSKID")]
         public string? fcskid { get; set; }//str
 
@@ -442,6 +446,5 @@ namespace WebApi.Models
         // CreatedBy  *Empl      `gorm:"foreignKey:FCCREATEBY;references:FCSKID;" json:"created_by"`
         [ForeignKey(nameof(fccreateby))]
         public Employee? created_by { get; set; }
-
     }
 }
