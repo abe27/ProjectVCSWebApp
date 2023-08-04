@@ -106,8 +106,19 @@ namespace WebApi.Models
         public GlHead? glhead { get; set; }
 
         //Acchart* Acchart    `gorm:"foreignKey:FCACCHART;references:FCSKID;" json:"acchart"`
+        [ForeignKey(nameof(fcacchart))]
+        public AccountingChart? accounting_chart { get; set; }
+
         //Job* Job        `gorm:"foreignKey:FCJOB;references:FCSKID;" json:"job"`
+        [ForeignKey(nameof(fcjob))]
+        public Job? job { get; set; }
+
         //CreatedBy* Employee   `gorm:"foreignKey:FCCREATEBY;references:FCSKID;" json:"created_by"`
+        [ForeignKey(nameof(fccreateby))]
+        public Employee? created_by { get; set; }
+
         //UpdatedBy* Employee   `gorm:"foreignKey:FCCORRECTB;references:FCSKID;" json:"updated_by"`
+        [ForeignKey(nameof(fccorrectb))]
+        public Employee? updated_by { get; set; }
     }
 }
